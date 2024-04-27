@@ -1,0 +1,6 @@
+{
+    "domain": "home_assistant_heating",
+    "name": "Home assistant controll heater",
+    "config_flow": false,
+    "requirements": []
+}
