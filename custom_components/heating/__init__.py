@@ -54,7 +54,8 @@ class MyDataUpdateCoordinator(DataUpdateCoordinator):
 
         super().__init__(
             hass,
-            session,
+            logger=_LOGGER,
+            name=DOMAIN,
             update_interval=timedelta(minutes=5),  # adjust as needed
         )
         _LOGGER.info('Initiated')
