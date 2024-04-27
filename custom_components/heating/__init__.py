@@ -5,9 +5,11 @@ from homeassistant.const import STATE_UNKNOWN
 import aiohttp
 import asyncio
 from datetime import timedelta
+import logging
 
-DOMAIN = "home_heating_component"
+DOMAIN = "home_assistant_heating"
 RESOURCE_URL = "http://your_api_endpoint/data"
+_LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass, config):
     async def async_reload_data(service_call):
@@ -48,11 +50,17 @@ class MyDataUpdateCoordinator(DataUpdateCoordinator):
         self.session = session
         self.data = None
 
+        _LOGGER.info('Initiating')
+
         super().__init__(
             hass,
             session,
             update_interval=timedelta(minutes=5),  # adjust as needed
         )
+        _LOGGER.info('Initiated')
+
+
+        
 
     async def _async_update_data(self):
         try:
